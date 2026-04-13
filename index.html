@@ -4,6 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>bruno menna</title>
+  <meta name="description" content="security researcher. product security engineer. 16 cves published.">
+  <meta property="og:title" content="bruno menna">
+  <meta property="og:description" content="security researcher. product security engineer. 16 cves published.">
+  <meta property="og:image" content="https://menna.website/og.png">
+  <meta property="og:url" content="https://menna.website">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="bruno menna">
+  <meta name="twitter:description" content="security researcher. product security engineer. 16 cves published.">
+  <meta name="twitter:image" content="https://menna.website/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='10 0 80 100'><text x='10' y='.9em' font-size='100' font-weight='bold' fill='%2300ff41'>⟩</text></svg>">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
@@ -297,6 +307,27 @@
       color: #1a1a1a;
       font-size: 11px;
     }
+
+    /* ── BACK TO TOP ── */
+    .top-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      color: #2a2a2a;
+      font-size: 14px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s, color 0.2s;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .top-btn.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .top-btn:hover { color: #ffb000; }
 
     /* ── CURSOR ── */
     .cursor {
@@ -844,7 +875,12 @@ def request(flow: http.HTTPFlow):
 
   </div>
 
+  <div class="top-btn" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
   <script>
+    window.addEventListener('scroll', function() {
+      document.getElementById('topBtn').classList.toggle('show', window.scrollY > 400);
+    });
     (function() {
       var text = 'bruno menna';
       var el = document.getElementById('typed');
