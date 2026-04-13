@@ -344,6 +344,53 @@
 
     @keyframes blink { 50% { opacity: 0; } }
 
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .wrap {
+        padding: 60px 18px 100px;
+      }
+
+      header { margin-bottom: 48px; }
+
+      .name { font-size: 14px; }
+
+      nav { gap: 20px; font-size: 11px; }
+
+      .sep { margin-bottom: 32px; }
+
+      .post {
+        flex-direction: column;
+        gap: 2px;
+        padding: 14px 0;
+      }
+
+      .post-date { min-width: auto; }
+
+      .post:hover { transform: none; }
+
+      .cve-row {
+        flex-wrap: wrap;
+        gap: 4px 12px;
+      }
+
+      .cve-id { min-width: auto; }
+      .cve-app { min-width: auto; }
+
+      .post-page h1 { font-size: 14px; }
+
+      .post-page .content pre {
+        padding: 14px;
+        font-size: 11px;
+      }
+
+      .back { font-size: 11px; margin-bottom: 28px; }
+
+      .top-btn {
+        bottom: 24px;
+        right: 24px;
+      }
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
