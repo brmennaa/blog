@@ -308,6 +308,30 @@
       font-size: 11px;
     }
 
+    /* ── COPY BUTTON ── */
+    .pre-wrap {
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: none;
+      border: 1px solid #1a1a1a;
+      color: #3a3a3a;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      padding: 3px 8px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .copy-btn:hover {
+      color: #ffb000;
+      border-color: #ffb000;
+    }
+
     /* ── BACK TO TOP ── */
     .top-btn {
       position: fixed;
@@ -927,6 +951,25 @@ def request(flow: http.HTTPFlow):
   <script>
     window.addEventListener('scroll', function() {
       document.getElementById('topBtn').classList.toggle('show', window.scrollY > 400);
+    });
+
+    document.querySelectorAll('.post-page pre').forEach(function(pre) {
+      var wrap = document.createElement('div');
+      wrap.className = 'pre-wrap';
+      pre.parentNode.insertBefore(wrap, pre);
+      wrap.appendChild(pre);
+
+      var btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'copy';
+      wrap.appendChild(btn);
+
+      btn.addEventListener('click', function() {
+        navigator.clipboard.writeText(pre.textContent).then(function() {
+          btn.textContent = 'copied';
+          setTimeout(function() { btn.textContent = 'copy'; }, 1500);
+        });
+      });
     });
     (function() {
       var text = 'bruno menna';
